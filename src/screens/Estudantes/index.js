@@ -1,5 +1,4 @@
 import React, {useEffect, useContext} from 'react';
-import {View} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import auth from '@react-native-firebase/auth';
 import {CommonActions} from '@react-navigation/native';
@@ -14,7 +13,6 @@ const Estudantes = ({navigation}) => {
   const {estudantes} = useContext(EstudanteContext);
 
   useEffect(() => {
-    //console.log(estudantes);
   }, [estudantes]);
 
   const routeStudent = value => {
