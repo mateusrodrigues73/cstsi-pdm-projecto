@@ -41,9 +41,7 @@ const AppStack = () => (
       name="Estudantes" 
       options={{
         tabBarLabel: 'Estudantes',    
-        tabBarIcon: () => {
-          <Icon name="people" color={colors.primary} size={24}/>
-        }
+        tabBarIcon: () =>  <Icon name="people" color={colors.primary} size={24}/>
       }}
     />
     

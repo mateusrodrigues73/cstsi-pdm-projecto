@@ -68,39 +68,26 @@ const SignUp = ({navigation}) => {
         keyboardType="default"
         returnKeyType="next"
         onChangeText={(t) => setNome(t)}
-        onEndEditing={() => this.emailTextInput.focus()}
       />
       <TextInput
-        ref={(ref) => {
-          this.emailTextInput = ref;
-        }}
         placeholder="Email"
         keyboardType="email-address"
         returnKeyType="next"
         onChangeText={(t) => setEmail(t)}
-        onEndEditing={() => this.passTextInput.focus()}
       />
       <TextInput
-        ref={(ref) => {
-          this.passTextInput = ref;
-        }}
         secureTextEntry={true}
         placeholder="Senha"
         keyboardType="default"
         returnKeyType="next"
         onChangeText={(t) => setPass(t)}
-        onEndEditing={() => this.confirmPassTextInput.focus()}
       />
       <TextInput
-        ref={(ref) => {
-          this.confirmPassTextInput = ref;
-        }}
         secureTextEntry={true}
         placeholder="Confirmar senha"
         keyboardType="default"
         returnKeyType="go"
         onChangeText={(t) => setConfirmPass(t)}
-        onEndEditing={() => cadastrar()}
       />
       <MyButtom text="cadastrar" onClick={cadastrar}/>
     </Body>

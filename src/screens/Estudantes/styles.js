@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 
+import { colors } from '../../assets/colors';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
