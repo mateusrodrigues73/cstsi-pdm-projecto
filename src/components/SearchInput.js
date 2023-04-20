@@ -8,7 +8,7 @@ import {colors} from '../assets/colors';
 const TextInput = styled.TextInput`
   width: 100%;
   height: 50px;
-  border-bottom-color: ${colors.grey};
+  border-bottom-color: ${colors.gray};
   border-bottom-width: 2px;
   font-size: 16px;
   padding-left: 2px;
