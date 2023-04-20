@@ -26,9 +26,6 @@ const Estudantes = ({navigation}) => {
     setEstudantesTemp(estudantesFiltro);
   }, [estudantes, pesquisa]);
 
-  const pesquisar = (search) => {
-    
-  }
   const routeStudent = value => {
     navigation.navigate('Estudante', {value});
   };
