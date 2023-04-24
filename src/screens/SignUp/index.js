@@ -5,15 +5,32 @@ import firestore from '@react-native-firebase/firestore';
 import { CommonActions } from '@react-navigation/native';
 
 import MyButtom from '../../components/MyButtom';
+import Loading from '../../components/Loading';
 import { Body, TextInput } from './styles';
 
 const SignUp = ({navigation}) => {
   const [nome, setNome] = useState('');  
+  const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const salvar = async(uid) => {
+    const saldo = 0;
+    await firestore()
+    .collection('usuarios')
+    .doc(uid)
+    .set({nome, sobrenome, saldo}, {merge: true})
+    .then(() => true)
+    .catch(err => {
+      console.error('SignUp, salvar: ' + err.message);
+      return false;
+    })
+  }
   
   const cadastrar = () => {
+    setLoading(true);
     if (nome !== '' && email !== '' && pass !== '' && confirmPass !== '') {
       if (pass === confirmPass) {
         auth().createUserWithEmailAndPassword(email, pass)
@@ -24,19 +41,28 @@ const SignUp = ({navigation}) => {
             user.email = email;
             userF.sendEmailVerification()
               .then(() => {
-                Alert.alert('Informação', 'Um email de confirmação foi enviado para: .' + email);
-                navigation.dispatch(
+                const retorno = salvar(userF.uid);
+                if (retorno) {
+                  setLoading(false);
+                  Alert.alert('Informação', 'Um email de confirmação foi enviado para: .' + email);
+                  navigation.dispatch(
                   CommonActions.reset({
                     index: 0,
                     routes: [{name: 'SignIn'}]
                   }),
                 );
+                } else {
+                  setLoading(false);
+                  Alert.alert('Alerta', 'Erro ao salvar usuário!');
+                }
               })
               .catch((e) => {
+                setLoading(false);
                 console.log(`SignUp, cadastrar: ${e}`);
               })
           })
           .catch((e) => {
+            setLoading(false);
             console.log(`SignUp, cadastrar: ${e}`);
             switch(e.code){
               case 'auth/email-already-in-use': 
@@ -64,10 +90,16 @@ const SignUp = ({navigation}) => {
   return (
     <Body>
       <TextInput
-        placeholder="Nome completo"
+        placeholder="Nome"
         keyboardType="default"
         returnKeyType="next"
         onChangeText={(t) => setNome(t)}
+      />
+      <TextInput
+        placeholder="Sobrenome"
+        keyboardType="default"
+        returnKeyType="next"
+        onChangeText={(t) => setSobrenome(t)}
       />
       <TextInput
         placeholder="Email"
@@ -90,6 +122,7 @@ const SignUp = ({navigation}) => {
         onChangeText={(t) => setConfirmPass(t)}
       />
       <MyButtom text="cadastrar" onClick={cadastrar}/>
+      {loading && <Loading />}
     </Body>
   );
 };
