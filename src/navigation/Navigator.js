@@ -25,7 +25,7 @@ const AuthStack = () => (
     }}>
     <Stack.Screen component={Preload} name="Preload" />
     <Stack.Screen component={SignIn} name="SignIn" />
-    <Stack.Screen component={SignUp} name="Sig>nUp" />
+    <Stack.Screen component={SignUp} name="SignUp" />
     <Stack.Screen component={ForgotPassword} name="ForgotPassword" />
   </Stack.Navigator>
 );
