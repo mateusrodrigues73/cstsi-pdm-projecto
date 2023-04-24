@@ -2,7 +2,7 @@ import React, {useEffect, useContext, useState} from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import auth from '@react-native-firebase/auth';
 import {CommonActions} from '@react-navigation/native';
-import { Alert } from 'react-native';
+
 
 import Item from './Item';
 import {EstudanteContext} from '../../context/EstudanteProvider';

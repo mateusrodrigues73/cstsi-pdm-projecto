@@ -1,14 +1,17 @@
 import React from "react";
 
-import { EstudanteProvider } from "../context/EstudanteProvider";
-import { AuthUserProvider } from "../context/AuthUserProvider";
 import Navigator from "./Navigator";
+import { AuthUserProvider } from "../context/AuthUserProvider";
+import { UsuarioProvider } from "../context/UsuarioProvider";
+import { EstudanteProvider } from "../context/EstudanteProvider";
 
 export default function Providers() {
   return (
     <AuthUserProvider>
       <EstudanteProvider>
-        <Navigator/>
+        <UsuarioProvider>
+          <Navigator/>
+        </UsuarioProvider>        
       </EstudanteProvider>
     </AuthUserProvider>
   );

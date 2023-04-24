@@ -10,7 +10,7 @@ import Estudante from '../screens/Estudante';
 import Preload from '../screens/Preload';
 import SignUp from '../screens/SignUp';
 import ForgotPassword from '../screens/ForgotPassword';
-import Cursos from '../screens/Cursos/styles';
+import Usuario from '../screens/Usuario';
 import { colors } from '../assets/colors';
 
 
@@ -44,8 +44,14 @@ const AppStack = () => (
         tabBarIcon: () =>  <Icon name="people" color={colors.primary} size={24}/>
       }}
     />
-    
-    <Tab.Screen component={Cursos} name="Cursos" />
+    <Tab.Screen 
+      component={Usuario} 
+      name="Usuario" 
+      options={{
+        tabBarLabel: 'Perfil',    
+        tabBarIcon: () =>  <Icon name="person" color={colors.primary} size={24}/>
+      }}
+    />
   </Tab.Navigator>
 );
 
