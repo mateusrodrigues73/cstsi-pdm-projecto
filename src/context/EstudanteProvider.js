@@ -34,25 +34,25 @@ export const EstudanteProvider = ({children}) => {
       .collection('estudantes')
       .doc()
       .set({nome, curso}, {merge: true})
-      .then(() => Alert.alert('Sucesso', 'Estudante cadastrado com sucesso'))
-      .catch(err => console.error('Estudante, Save user: ' + err.message))
+      .then(() => Alert.alert('Sucesso', 'Estudante cadastrado com êxito'))
+      .catch(error => console.error(`EstudanteProvider, save: ${error.message}`));
     } else {
       await firestore()
       .collection('estudantes')
       .doc(uid)
       .set({nome, curso}, {merge: true})
-      .then(() => Alert.alert('Sucesso', 'Estudante atualizado com sucesso'))
-      .catch(err => console.error('Estudante, Save user: ' + err.message))
+      .then(() => Alert.alert('Sucesso', 'Estudante atualizado com êxito'))
+      .catch(error => console.error(`EstudanteProvider, save: ${error.message}`));
     }
   }
 
   const del = async (uid) => {
     await firestore()
-      .collection('estudantes')
-      .doc(uid)
-      .delete()
-      .then(() => Alert.alert('Sucesso!', 'Estudante removido com sucesso'))
-      .catch(err => console.error('Estudante, Erase user: ' + err.message))
+    .collection('estudantes')
+    .doc(uid)
+    .delete()
+    .then(() => Alert.alert('Sucesso!', 'Estudante removido com êxito'))
+    .catch(error => console.error(`EstudanteProvider, del: ${error.message}`));
   }
 
   return (

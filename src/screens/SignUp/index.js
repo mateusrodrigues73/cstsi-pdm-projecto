@@ -80,9 +80,11 @@ const SignUp = ({navigation}) => {
             }
           });
       } else {
+        setLoading(false);
         Alert.alert('Erro', 'Senhas devem ser iguais.');
       }
     }  else {
+      setLoading(false);
       Alert.alert('Erro', 'Preencha todos os campos.');
     }
   };
