@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import MyButtom from '../../components/MyButtom';
+import React, {useState, useContext} from 'react';
 import auth from '@react-native-firebase/auth';
 import {
   SafeAreaView,
@@ -12,11 +11,15 @@ import {
   Alert,
 } from 'react-native';
 import {CommonActions} from '@react-navigation/native';
-import { colors } from '../../assets/colors';
-import Loading from '../../components/Loading';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
+import { colors } from '../../assets/colors';
+import MyButtom from '../../components/MyButtom';
+import Loading from '../../components/Loading';
+import { UsuarioContext } from '../../context/UsuarioProvider';
+
 const SignIn = ({navigation}) => {
+  const {setAuthUser} = useContext(UsuarioContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -46,6 +49,7 @@ const SignIn = ({navigation}) => {
           return;
         }
         await storeUserSession(email, password);
+        setAuthUser(auth.currentUser);
         setLoading(false);
         navigation.dispatch(
           CommonActions.reset({
