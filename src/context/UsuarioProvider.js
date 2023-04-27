@@ -23,6 +23,15 @@ export const UsuarioProvider = ({children}) => {
     };
   }, [userSession]);
 
+  useEffect(() => {
+    const unsubscribe = auth().onAuthStateChanged((user) => {
+      if (user) {
+        setUserSession(user);
+        unsubscribe();
+      } 
+    });
+  }, []);
+
   const getUsers = () => {
     const listener = firestore()
     .collection('usuarios')
@@ -62,13 +71,6 @@ export const UsuarioProvider = ({children}) => {
     });
     return listener;
   }
-
-  const unsubscribe = auth().onAuthStateChanged((user) => {
-    if (user) {
-      setUserSession(user);
-      unsubscribe();
-    } 
-  });
 
   const save = async (uid, nome, sobrenome, saldo) => {
     await firestore()
