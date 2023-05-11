@@ -11,8 +11,9 @@ import Preload from '../screens/Preload';
 import SignUp from '../screens/SignUp';
 import ForgotPassword from '../screens/ForgotPassword';
 import Usuario from '../screens/Usuario';
+import Anuncios from '../screens/Anuncios';
+import Anuncio from '../screens/Anuncio';
 import { colors } from '../assets/colors';
-
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,6 +46,14 @@ const AppStack = () => (
       }}
     />
     <Tab.Screen 
+      component={Anuncios} 
+      name="Anuncios" 
+      options={{
+        tabBarLabel: 'Seus anúncios',    
+        tabBarIcon: () =>  <Icon name="basket" color={colors.primary} size={24}/>
+      }}
+    />
+    <Tab.Screen 
       component={Usuario} 
       name="Usuario" 
       options={{
@@ -65,6 +74,7 @@ const Navigator = () => (
       <Stack.Screen component={AuthStack} name="AuthStack" />
       <Stack.Screen component={AppStack} name="AppStack" />
       <Stack.Screen component={Estudante} name="Estudante" />
+      <Stack.Screen component={Anuncio} name="Anuncio" />
     </Stack.Navigator>
   </NavigationContainer>
 );
