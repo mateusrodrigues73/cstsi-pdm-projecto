@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 import { ApiContext } from "./ApiProvider";
 
@@ -26,7 +26,8 @@ export const ProdutosProvider = ({children}) => {
           modelo: d.fields.modelo.stringValue,
           marca: d.fields.marca.stringValue,
           preco: d.fields.preco.stringValue,
-          uid: k[1],
+          userId: d.fields.userId.stringValue,
+          id: k[1],
         });
       });
       data.sort((a, b) => b.modelo.localeCompare(a.modelo));
@@ -37,8 +38,50 @@ export const ProdutosProvider = ({children}) => {
     }
   };
 
+  const save = async val => {
+    try {
+      await api.post('/produtos/', {
+        fields: {
+          modelo: {stringValue: val.modelo},
+          marca: {stringValue: val.marca},
+          preco: {stringValue: val.preco},
+          userId: {stringValue: val.userId},
+        },
+      });
+      getProdutos();
+      return true;
+    } catch (response) {
+      console.error(`ProdutoProvider, save: ${response}`);
+      return false;
+    }
+  };
+
+  const update = async val => {
+    try {
+      await api.patch('/produtos/' + val.id, {
+        fields: {
+          modelo: {stringValue: val.modelo},
+          marca: {stringValue: val.marca},
+          preco: {stringValue: val.preco},
+          userId: {stringValue: val.userId},
+        },
+      });
+      getProdutos();
+      return true;
+    } catch (response) {
+      console.error(`ProdutoProvider, update: ${response}`);
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    if (api) {
+      getProdutos();
+    }
+  }, [api]);
+
   return (
-    <ProdutosContext.Provider value={{produtos, getProdutos}}>
+    <ProdutosContext.Provider value={{produtos, getProdutos, save, update}}>
       {children}
     </ProdutosContext.Provider>
   );
