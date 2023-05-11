@@ -5,6 +5,7 @@ import { AuthUserProvider } from "../context/AuthUserProvider";
 import { ApiProvider } from "../context/ApiProvider";
 import { UsuarioProvider } from "../context/UsuarioProvider";
 import { EstudanteProvider } from "../context/EstudanteProvider";
+import { ProdutosProvider } from "../context/ProdutosProvider";
 
 export default function Providers() {
   return (
@@ -12,7 +13,9 @@ export default function Providers() {
       <ApiProvider>
         <EstudanteProvider>
           <UsuarioProvider>
-            <Navigator/>
+            <ProdutosProvider>
+              <Navigator/>
+            </ProdutosProvider>
           </UsuarioProvider>        
         </EstudanteProvider>
       </ApiProvider>
