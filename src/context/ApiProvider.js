@@ -37,6 +37,12 @@ export const ApiProvider = ({children}) => {
 
   useEffect(() => {
     getApi();
+    const unsubscriber = auth().onAuthStateChanged(authUser => {
+      if (authUser) {
+        getApi();
+      }
+    });
+    return unsubscriber;
   }, []);
 
   return (
