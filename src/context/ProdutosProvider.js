@@ -48,7 +48,7 @@ export const ProdutosProvider = ({children}) => {
           userId: {stringValue: val.userId},
         },
       });
-      getProdutos();
+      await getProdutos();
       return true;
     } catch (response) {
       console.error(`ProdutoProvider, save: ${response}`);
@@ -66,7 +66,7 @@ export const ProdutosProvider = ({children}) => {
           userId: {stringValue: val.userId},
         },
       });
-      getProdutos();
+      await getProdutos();
       return true;
     } catch (response) {
       console.error(`ProdutoProvider, update: ${response}`);
@@ -77,7 +77,7 @@ export const ProdutosProvider = ({children}) => {
   const del = async val => {
     try {
       await api.delete('/produtos/' + val);
-      getProdutos();
+      await getProdutos();
       return true;
     } catch (response) {
       console.error(`ProdutoProvider, delete: ${response}`);

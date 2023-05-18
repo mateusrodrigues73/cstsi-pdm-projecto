@@ -48,6 +48,7 @@ const Anuncios = ({navigation}) => {
   );
 
   useEffect(() => {
+    setUserSessionProdutos(null)
     filterProdutos();
   }, [produtos]);
 
