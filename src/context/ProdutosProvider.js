@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {createContext, useContext, useState, useEffect} from 'react';
 
-import { ApiContext } from "./ApiProvider";
+import {ApiContext} from './ApiProvider';
 
 export const ProdutosContext = createContext({});
 
@@ -15,7 +15,7 @@ export const ProdutosProvider = ({children}) => {
       //console.log(response.data);
       //console.log(response.data.documents);
       let data = [];
-      response.data.documents.map((d) => {
+      response.data.documents.map(d => {
         let k = d.name.split(
           'projects/cstsi-pdm-projeto/databases/(default)/documents/produtos/',
         );
@@ -74,6 +74,17 @@ export const ProdutosProvider = ({children}) => {
     }
   };
 
+  const del = async val => {
+    try {
+      await api.delete('/produtos/' + val);
+      getProdutos();
+      return true;
+    } catch (response) {
+      console.error(`ProdutoProvider, delete: ${response}`);
+      return false;
+    }
+  };
+
   useEffect(() => {
     if (api) {
       getProdutos();
@@ -81,8 +92,9 @@ export const ProdutosProvider = ({children}) => {
   }, [api]);
 
   return (
-    <ProdutosContext.Provider value={{produtos, getProdutos, save, update}}>
+    <ProdutosContext.Provider
+      value={{produtos, getProdutos, save, update, del}}>
       {children}
     </ProdutosContext.Provider>
   );
-}
+};
