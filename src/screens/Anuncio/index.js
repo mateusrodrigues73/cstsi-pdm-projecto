@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {Alert, ToastAndroid} from 'react-native';
 
 import Loading from '../../components/Loading';
 import MyButtom from '../../components/MyButtom';
 import {Container, TextInput} from './styles';
-import { UsuarioContext } from '../../context/UsuarioProvider';
-import { ProdutosContext } from '../../context/ProdutosProvider';
+import {UsuarioContext} from '../../context/UsuarioProvider';
+import {ProdutosContext} from '../../context/ProdutosProvider';
 
 const Anuncio = ({route, navigation}) => {
-  const {save, update} = useContext(ProdutosContext);
+  const {save, update, del} = useContext(ProdutosContext);
   const {authUser} = useContext(UsuarioContext);
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState(null);
@@ -51,8 +51,34 @@ const Anuncio = ({route, navigation}) => {
     }
   };
 
-  const excluir = () => {
-    alert('coming soon');
+  const excluir = async () => {
+    Alert.alert(
+      'Fique Esperto!',
+      'Você tem certeza que deseja excluir o anúncio?',
+      [
+        {
+          text: 'Não',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: 'Sim',
+          onPress: async () => {
+            setLoading(true);
+            if (await del(id)) {
+              ToastAndroid.show(
+                'Show! Você excluiu com sucesso.',
+                ToastAndroid.LONG,
+              );
+            } else {
+              ToastAndroid.show('Ops! Erro ao excluir.', ToastAndroid.LONG);
+            }
+            setLoading(false);
+            navigation.goBack();
+          },
+        },
+      ],
+    );
   };
 
   useEffect(() => {
@@ -92,6 +118,6 @@ const Anuncio = ({route, navigation}) => {
       {loading && <Loading />}
     </Container>
   );
-}
+};
 
 export default Anuncio;
