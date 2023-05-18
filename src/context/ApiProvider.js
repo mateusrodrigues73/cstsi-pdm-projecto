@@ -11,7 +11,7 @@ export const ApiProvider = ({children}) => {
     if (auth().currentUser) {
       auth()
         .currentUser.getIdToken(true)
-        .then((idToken) => {
+        .then(idToken => {
           if (idToken) {
             const apiLocal = create({
               baseURL:
@@ -20,7 +20,7 @@ export const ApiProvider = ({children}) => {
             });
 
             //utiliza o middleware para lançar um exceção (usa try-catch no consumidor)
-            apiLocal.addResponseTransform((response) => {
+            apiLocal.addResponseTransform(response => {
               if (!response.ok) {
                 throw response;
               }
@@ -29,7 +29,7 @@ export const ApiProvider = ({children}) => {
             setApi(apiLocal);
           }
         })
-        .catch((e) => {
+        .catch(e => {
           console.error('ApiProvider, getApi: ' + e);
         });
     }
@@ -48,7 +48,7 @@ export const ApiProvider = ({children}) => {
   return (
     <ApiContext.Provider
       value={{
-        api
+        api,
       }}>
       {children}
     </ApiContext.Provider>

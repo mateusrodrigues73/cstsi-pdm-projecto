@@ -13,7 +13,7 @@ import ForgotPassword from '../screens/ForgotPassword';
 import Usuario from '../screens/Usuario';
 import Anuncios from '../screens/Anuncios';
 import Anuncio from '../screens/Anuncio';
-import { colors } from '../assets/colors';
+import {colors} from '../assets/colors';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -37,28 +37,34 @@ const AppStack = () => (
     screenOptions={{
       headerShown: false,
     }}>
-    <Tab.Screen 
-      component={Estudantes} 
-      name="Estudantes" 
+    <Tab.Screen
+      component={Estudantes}
+      name="Estudantes"
       options={{
-        tabBarLabel: 'Estudantes',    
-        tabBarIcon: () =>  <Icon name="people" color={colors.primary} size={24}/>
+        tabBarLabel: 'Estudantes',
+        tabBarIcon: () => (
+          <Icon name="people" color={colors.primary} size={24} />
+        ),
       }}
     />
-    <Tab.Screen 
-      component={Anuncios} 
-      name="Anuncios" 
+    <Tab.Screen
+      component={Anuncios}
+      name="Anuncios"
       options={{
-        tabBarLabel: 'Seus anúncios',    
-        tabBarIcon: () =>  <Icon name="basket" color={colors.primary} size={24}/>
+        tabBarLabel: 'Seus anúncios',
+        tabBarIcon: () => (
+          <Icon name="basket" color={colors.primary} size={24} />
+        ),
       }}
     />
-    <Tab.Screen 
-      component={Usuario} 
-      name="Usuario" 
+    <Tab.Screen
+      component={Usuario}
+      name="Usuario"
       options={{
-        tabBarLabel: 'Perfil',    
-        tabBarIcon: () =>  <Icon name="person" color={colors.primary} size={24}/>
+        tabBarLabel: 'Perfil',
+        tabBarIcon: () => (
+          <Icon name="person" color={colors.primary} size={24} />
+        ),
       }}
     />
   </Tab.Navigator>

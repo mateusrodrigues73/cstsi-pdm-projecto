@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 
-import { EstudanteContext } from '../../context/EstudanteProvider';
+import {EstudanteContext} from '../../context/EstudanteProvider';
 import Loading from '../../components/Loading';
 import MyButtom from '../../components/MyButtom';
 import {Container, TextInput} from './styles';
@@ -24,7 +24,7 @@ const Estudante = ({route, navigation}) => {
     Alert.alert('Opa!', 'Você tem certeza que deseja apagar um estudante?', [
       {
         text: 'Cancel',
-        onPress: () => {}
+        onPress: () => {},
       },
       {
         text: 'OK',
@@ -33,9 +33,9 @@ const Estudante = ({route, navigation}) => {
           await del(uid);
           setLoading(false);
           navigation.goBack();
-        }
-      }
-    ])
+        },
+      },
+    ]);
   };
 
   useEffect(() => {

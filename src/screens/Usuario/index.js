@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Alert } from 'react-native';
+import React, {useState, useEffect, useContext} from 'react';
+import {Alert} from 'react-native';
 import {CommonActions} from '@react-navigation/native';
 
-import { UsuarioContext } from '../../context/UsuarioProvider';
+import {UsuarioContext} from '../../context/UsuarioProvider';
 import {Container, TextInput, Text} from './styles';
 import Loading from '../../components/Loading';
 import MyButtom from '../../components/MyButtom';
@@ -23,13 +23,13 @@ const Usuario = ({navigation}) => {
     await save(uid, nome, sobrenome, novoSaldo);
     setAddSaldo();
     setLoading(false);
-  }
-  
+  };
+
   const excluir = () => {
     Alert.alert('Opa!', 'Você tem certeza que deseja deletar sua conta?', [
       {
         text: 'Cancelar',
-        onPress: () => {}
+        onPress: () => {},
       },
       {
         text: 'Continuar',
@@ -42,11 +42,11 @@ const Usuario = ({navigation}) => {
               index: 0,
               routes: [{name: 'AuthStack'}],
             }),
-          ); 
-        }
-      }
-    ])
-  }
+          );
+        },
+      },
+    ]);
+  };
 
   useEffect(() => {
     setUid(authUser.uid);
@@ -54,7 +54,7 @@ const Usuario = ({navigation}) => {
     setSobrenome(authUser.sobrenome);
     setSaldo(authUser.saldo);
   }, [saldo, authUser]);
-  
+
   return (
     <Container>
       <TextInput
@@ -84,6 +84,6 @@ const Usuario = ({navigation}) => {
       {loading && <Loading />}
     </Container>
   );
-}
+};
 
 export default Usuario;

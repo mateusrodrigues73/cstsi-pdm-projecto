@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import {
   SafeAreaView,
@@ -13,7 +13,7 @@ import {
 import {CommonActions} from '@react-navigation/native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
-import { colors } from '../../assets/colors';
+import {colors} from '../../assets/colors';
 import MyButtom from '../../components/MyButtom';
 import Loading from '../../components/Loading';
 
@@ -42,7 +42,10 @@ const SignIn = ({navigation}) => {
         setLoading(true);
         await auth().signInWithEmailAndPassword(email, password);
         if (!auth().currentUser.emailVerified) {
-          Alert.alert('Erro', 'Você deve confirmar o seu email para prosseguir');
+          Alert.alert(
+            'Erro',
+            'Você deve confirmar o seu email para prosseguir',
+          );
           setLoading(false);
           return;
         }
@@ -81,7 +84,7 @@ const SignIn = ({navigation}) => {
 
   const cadastrar = () => {
     navigation.navigate('SignUp');
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>

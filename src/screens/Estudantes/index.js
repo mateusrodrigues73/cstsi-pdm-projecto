@@ -8,7 +8,7 @@ import {EstudanteContext} from '../../context/EstudanteProvider';
 import MyButtom from '../../components/MyButtom';
 import AddFloatButton from '../../components/AddFloatButton';
 import SearchInput from '../../components/SearchInput';
-import {Container, Text} from './styles'; 
+import {Container, Text} from './styles';
 
 const Estudantes = ({navigation}) => {
   const {estudantes} = useContext(EstudanteContext);
@@ -34,35 +34,34 @@ const Estudantes = ({navigation}) => {
       .then(() => {
         auth()
           .signOut()
-            .then(() => {})
-            .catch((e) => {
-              console.error(`Estudantes, signOut, auth: ${e}`);
-            });
-            navigation.dispatch(
-              CommonActions.reset({
-                index: 0,
-                routes: [{name: 'AuthStack'}],
-              }),
-            ); 
+          .then(() => {})
+          .catch(e => {
+            console.error(`Estudantes, signOut, auth: ${e}`);
+          });
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{name: 'AuthStack'}],
+          }),
+        );
       })
-      .catch((e) =>{
+      .catch(e => {
         console.error(`Estudantes, signOut, removeItem: ${e}`);
       });
-  }
+  };
 
   return (
     <Container>
       <Text>Estudantes</Text>
-      <SearchInput setPesquisa={setPesquisa}></SearchInput>
+      <SearchInput setPesquisa={setPesquisa} />
 
-      {estudantesTemp.length === 0 
+      {estudantesTemp.length === 0
         ? estudantes.map((v, k) => {
-          return <Item item={v} onPress={() => routeStudent(v)} key={k} />;
-        })
+            return <Item item={v} onPress={() => routeStudent(v)} key={k} />;
+          })
         : estudantesTemp.map((v, k) => {
-          return <Item item={v} onPress={() => routeStudent(v)} key={k} />;
-        })
-      }
+            return <Item item={v} onPress={() => routeStudent(v)} key={k} />;
+          })}
       <AddFloatButton onClick={() => routeStudent(null)} />
       <MyButtom text="Sair" onClick={signOut} />
     </Container>

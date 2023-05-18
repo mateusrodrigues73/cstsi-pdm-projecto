@@ -2,7 +2,7 @@ import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import styled from 'styled-components/native';
 
-import { colors } from '../assets/colors';
+import {colors} from '../assets/colors';
 
 export const LoadingArea = styled.View`
   position: absolute;

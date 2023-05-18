@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import Navigator from "./Navigator";
-import { AuthUserProvider } from "../context/AuthUserProvider";
-import { ApiProvider } from "../context/ApiProvider";
-import { UsuarioProvider } from "../context/UsuarioProvider";
-import { EstudanteProvider } from "../context/EstudanteProvider";
-import { ProdutosProvider } from "../context/ProdutosProvider";
+import Navigator from './Navigator';
+import {AuthUserProvider} from '../context/AuthUserProvider';
+import {ApiProvider} from '../context/ApiProvider';
+import {UsuarioProvider} from '../context/UsuarioProvider';
+import {EstudanteProvider} from '../context/EstudanteProvider';
+import {ProdutosProvider} from '../context/ProdutosProvider';
 
 export default function Providers() {
   return (
@@ -14,9 +14,9 @@ export default function Providers() {
         <EstudanteProvider>
           <UsuarioProvider>
             <ProdutosProvider>
-              <Navigator/>
+              <Navigator />
             </ProdutosProvider>
-          </UsuarioProvider>        
+          </UsuarioProvider>
         </EstudanteProvider>
       </ApiProvider>
     </AuthUserProvider>

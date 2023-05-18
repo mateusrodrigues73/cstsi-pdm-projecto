@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {CommonActions} from '@react-navigation/native';
 
 import AddFloatButton from '../../components/AddFloatButton';
 import Item from './Item';
 import {Container, FlatList} from './styles';
 
-import { ProdutosContext } from '../../context/ProdutosProvider';
-import { UsuarioContext } from '../../context/UsuarioProvider';
+import {ProdutosContext} from '../../context/ProdutosProvider';
+import {UsuarioContext} from '../../context/UsuarioProvider';
 
 const Anuncios = ({navigation}) => {
   const {produtos} = useContext(ProdutosContext);
@@ -34,10 +34,10 @@ const Anuncios = ({navigation}) => {
   const filterProdutos = text => {
     let p = [];
     produtos.forEach(e => {
-       if (e.userId === authUser.uid) {
-          p.push(e);
-         }
-       });
+      if (e.userId === authUser.uid) {
+        p.push(e);
+      }
+    });
     if (p.length > 0) {
       setUserSessionProdutos(p);
     }
@@ -61,6 +61,6 @@ const Anuncios = ({navigation}) => {
       <AddFloatButton onClick={routeAddAnuncio} />
     </Container>
   );
-}
+};
 
 export default Anuncios;

@@ -1,8 +1,7 @@
-
 import React from 'react';
 import styled from 'styled-components/native';
 
-import { colors } from '../../assets/colors';
+import {colors} from '../../assets/colors';
 
 const Button = styled.TouchableHighlight`
   width: 100%;

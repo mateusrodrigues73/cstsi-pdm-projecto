@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View } from 'react-native';
+import {View} from 'react-native';
 
 import {colors} from '../assets/colors';
 
@@ -23,7 +23,7 @@ const SearchInput = ({setPesquisa}) => {
       <TextInput
         placeholder="Pesquisar por nome"
         keyboardType="default"
-        onChangeText={(t) => setPesquisa(t)}
+        onChangeText={t => setPesquisa(t)}
       />
     </View>
   );
