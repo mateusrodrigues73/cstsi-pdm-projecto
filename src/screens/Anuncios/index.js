@@ -4,6 +4,7 @@ import {CommonActions} from '@react-navigation/native';
 import AddFloatButton from '../../components/AddFloatButton';
 import Item from './Item';
 import {Container, FlatList} from './styles';
+import MyButtom from '../../components/MyButtom';
 
 import {ProdutosContext} from '../../context/ProdutosProvider';
 import {UsuarioContext} from '../../context/UsuarioProvider';
@@ -49,10 +50,15 @@ const Anuncios = ({navigation}) => {
 
   useEffect(() => {
     filterProdutos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [produtos]);
 
   return (
     <Container>
+      <MyButtom
+        text="Visualizar no Mapa"
+        onClick={() => navigation.navigate('ProdutosMap')}
+      />
       <FlatList
         data={userSessionProdutos}
         renderItem={renderItem}

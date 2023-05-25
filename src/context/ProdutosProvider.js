@@ -26,6 +26,8 @@ export const ProdutosProvider = ({children}) => {
           modelo: d.fields.modelo.stringValue,
           marca: d.fields.marca.stringValue,
           preco: d.fields.preco.stringValue,
+          latitude: d.fields.latitude.stringValue,
+          longitude: d.fields.longitude.stringValue,
           userId: d.fields.userId.stringValue,
           id: k[1],
         });
@@ -45,6 +47,8 @@ export const ProdutosProvider = ({children}) => {
           modelo: {stringValue: val.modelo},
           marca: {stringValue: val.marca},
           preco: {stringValue: val.preco},
+          latitude: {stringValue: val.latitude},
+          longitude: {stringValue: val.longitude},
           userId: {stringValue: val.userId},
         },
       });
@@ -63,6 +67,8 @@ export const ProdutosProvider = ({children}) => {
           modelo: {stringValue: val.modelo},
           marca: {stringValue: val.marca},
           preco: {stringValue: val.preco},
+          latitude: {stringValue: val.latitude},
+          longitude: {stringValue: val.longitude},
           userId: {stringValue: val.userId},
         },
       });
@@ -89,6 +95,7 @@ export const ProdutosProvider = ({children}) => {
     if (api) {
       getProdutos();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [api]);
 
   return (
