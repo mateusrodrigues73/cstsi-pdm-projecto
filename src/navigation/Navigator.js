@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -13,6 +14,7 @@ import ForgotPassword from '../screens/ForgotPassword';
 import Usuario from '../screens/Usuario';
 import Anuncios from '../screens/Anuncios';
 import Anuncio from '../screens/Anuncio';
+import ProdutosMap from '../screens/ProdutosMap';
 import {colors} from '../assets/colors';
 
 const Stack = createNativeStackNavigator();
@@ -81,6 +83,13 @@ const Navigator = () => (
       <Stack.Screen component={AppStack} name="AppStack" />
       <Stack.Screen component={Estudante} name="Estudante" />
       <Stack.Screen component={Anuncio} name="Anuncio" />
+      <Stack.Screen
+        component={ProdutosMap}
+        name="ProdutosMap"
+        options={{
+          presentation: 'modal',
+        }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );
