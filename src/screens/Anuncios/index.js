@@ -49,7 +49,7 @@ const Anuncios = ({navigation}) => {
   );
 
   useEffect(() => {
-    setUserSessionProdutos(null)
+    setUserSessionProdutos(null);
     filterProdutos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [produtos]);
