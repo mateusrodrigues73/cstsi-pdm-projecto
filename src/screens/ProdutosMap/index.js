@@ -47,17 +47,19 @@ const ProdutosMap = ({route}) => {
         showsUserLocation={true}
         followsUserLocation={true}
         onPress={e => {
-          route.params.onGoBack(
-            e.nativeEvent.coordinate.latitude,
-            e.nativeEvent.coordinate.longitude,
-          );
-          Alert.alert(
-            'Coordenadas',
-            'latitude= ' +
-              e.nativeEvent.coordinate.latitude +
-              ' longitude= ' +
+          if (route.params) {
+            route.params.onGoBack(
+              e.nativeEvent.coordinate.latitude,
               e.nativeEvent.coordinate.longitude,
-          );
+            );
+            Alert.alert(
+              'Coordenadas',
+              'latitude= ' +
+                e.nativeEvent.coordinate.latitude +
+                ' longitude= ' +
+                e.nativeEvent.coordinate.longitude,
+            );
+          }
         }}
         initialRegion={{
           //região onde deve focar o mapa na inicialização
@@ -75,10 +77,10 @@ const ProdutosMap = ({route}) => {
                 longitude: Number(produto.longitude),
               }}
               title={produto.modelo}
-              description={produto.categoria}
+              description={produto.marca}
               draggable>
               <Icon
-                name="business"
+                name="cube"
                 color={mapType === 'standard' ? colors.primary : colors.white}
                 size={35}
               />
